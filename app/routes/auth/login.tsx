@@ -11,7 +11,7 @@ export default function LoginPage() {
 
   const handleSubmit = (formData: FormData) => {
     const { email, password } = formDataToObject(formData);
-    // alert(`Email: ${email}\nPassword: ${password}`);
+
     if (email === "noobuser@joinjoy.com" && password === "password") {
       const user = {
         name: "Noob User",
@@ -23,7 +23,7 @@ export default function LoginPage() {
       return;
     }
 
-    alert("Incorrect username or password");
+    alert("username or password is incorrect");
   };
 
   return (
