@@ -27,7 +27,7 @@ export default function Button({
   return (
     <button
       className={cn(
-        "flex items-center justify-center p-2.75 px-5  rounded-lg font-light cursor-pointer",
+        "flex items-center justify-center p-2.75 px-5  rounded-lg font-light cursor-pointer disabled:cursor-not-allowed",
         variants[variant],
         className
       )}

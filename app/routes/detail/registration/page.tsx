@@ -1,11 +1,14 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import FacebookIcon from "~/assets/icons/facebook";
 import LineIcon from "~/assets/icons/line";
 import Button from "~/components/common/button";
 import VolunteerCard from "~/components/pages/card";
+import { useAuth } from "~/contexts/useAuth";
 import { formDataToObject } from "~/utils/form";
 
 export default function RegisterationPage() {
+  const { isAuthenticated, loading } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = (formData: FormData) => {
@@ -18,6 +21,13 @@ export default function RegisterationPage() {
 
     navigate("/detail/registration/receipt", { state: { status: 200 } });
   };
+
+  useEffect(() => {
+    if (!loading && !isAuthenticated) {
+      navigate("/login", { replace: true });
+      return;
+    }
+  }, [isAuthenticated, loading]);
 
   return (
     <div className="max-w-330 p-5 flex flex-col m-auto mt-10 mb-40">

@@ -55,7 +55,7 @@ export default function Pagination({
   };
 
   const previous = () => {
-    if (page > 0) {
+    if (page > 1) {
       setPage((v) => v - 1);
     }
   };

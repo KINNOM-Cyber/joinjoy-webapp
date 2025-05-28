@@ -18,7 +18,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Detail({ params }: Route.ComponentProps) {
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
   const auth = useAuth();
 
   const [open, setOpen] = useState(false);
@@ -28,7 +28,7 @@ export default function Detail({ params }: Route.ComponentProps) {
       setOpen(true);
       return;
     }
-    naviagte(`/detail/${params.detailId}/registration`);
+    navigate(`/detail/${params.detailId}/registration`);
   };
 
   return (
@@ -46,7 +46,7 @@ export default function Detail({ params }: Route.ComponentProps) {
               </p>
 
               <Button
-                onClick={() => naviagte("/login")}
+                onClick={() => navigate("/login")}
                 className="bg-[#7DB5E3] flex-1 mt-10 w-80"
                 variant={ButtonVariant.FILL_ROUND}
               >

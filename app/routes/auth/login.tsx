@@ -3,6 +3,7 @@ import Button from "~/components/common/button";
 import Input from "~/components/common/input";
 import Link from "~/components/common/link";
 import { useAuth } from "~/contexts/useAuth";
+import { login } from "~/libs/auth";
 import { formDataToObject } from "~/utils/form";
 
 export default function LoginPage() {
@@ -10,20 +11,20 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   const handleSubmit = (formData: FormData) => {
-    const { email, password } = formDataToObject(formData);
+    const { email, password } = formDataToObject(formData) as {
+      email: string;
+      password: string;
+    };
 
-    if (email === "noobuser@joinjoy.com" && password === "password") {
-      const user = {
-        name: "Noob User",
-        email,
-        role: "user",
-      };
-      auth?.updateCredential(user);
-      navigate("/", { replace: true });
+    const user = login(email, password);
+    if (!user) {
+      alert("username or password is incorrect");
       return;
     }
-
-    alert("username or password is incorrect");
+    
+    auth?.updateCredential(user);
+    navigate("/", { replace: true });
+    return;
   };
 
   return (

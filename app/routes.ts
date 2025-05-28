@@ -25,4 +25,12 @@ export default [
   layout("routes/status/layout.tsx", [
     route("/status/registration", "routes/status/registration/page.tsx"),
   ]),
+  route("/dashboard", "routes/dashboard/layout.tsx", [
+    route("activities", "routes/dashboard/activities/page.tsx"),
+    route("activity/create", "routes/dashboard/activity/create/page.tsx"),
+    route(
+      "activity/registrations",
+      "routes/dashboard/activity/registrations/page.tsx"
+    ),
+  ]),
 ] satisfies RouteConfig;

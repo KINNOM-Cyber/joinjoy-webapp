@@ -10,7 +10,7 @@ export default function Avatar({ ref, className, src, ...props }: AvatarProps) {
     <div
       ref={ref}
       className={cn(
-        "flex border-2 p-2 rounded-full border-[#5D9BCF] size-19 mr-4.25 cursor-pointer overflow-hidden",
+        "flex border-2 p-2 rounded-full border-[#5D9BCF] size-19 overflow-hidden",
         className
       )}
       {...props}
